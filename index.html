@@ -1,0 +1,340 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>大西洋飲料 1213 ・ 財報深度解析</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Noto+Sans+TC:wght@400;500;700;900&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --blurple:#635BFF; --blurple-d:#4b45c6;
+    --ink:#0A2540; --slate:#425466; --mute:#697386;
+    --light:#F6F9FC; --line:#E3E8EE; --white:#fff;
+    --red:#DF1B41; --green:#0E9F6E;
+    --shadow-s:0 2px 5px -1px rgba(50,50,93,.10),0 1px 3px -1px rgba(0,0,0,.06);
+    --shadow:0 15px 35px rgba(60,66,87,.08),0 5px 15px rgba(0,0,0,.06);
+    --shadow-l:0 30px 60px -12px rgba(50,50,93,.22),0 18px 36px -18px rgba(0,0,0,.25);
+    --font:"Inter","Noto Sans TC",system-ui,sans-serif;
+  }
+  *{margin:0;padding:0;box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{font-family:var(--font);color:var(--ink);background:var(--white);line-height:1.7;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+  .wrap{max-width:1080px;margin:0 auto;padding:0 28px}
+  h1,h2,h3{letter-spacing:-.02em;line-height:1.12;font-weight:800}
+  a{color:var(--blurple);text-decoration:none}
+
+  /* ===== NAV ===== */
+  nav{position:fixed;top:0;left:0;right:0;z-index:50;padding:18px 0;transition:.35s}
+  nav.solid{background:rgba(255,255,255,.85);backdrop-filter:saturate(180%) blur(10px);box-shadow:0 1px 0 rgba(0,0,0,.06);padding:12px 0}
+  nav .wrap{display:flex;align-items:center;justify-content:space-between}
+  nav .brand{display:flex;align-items:center;gap:11px;font-weight:800;font-size:18px;color:var(--ink)}
+  nav .brand img{width:30px;height:30px;object-fit:contain}
+  nav .links{display:flex;gap:30px;align-items:center}
+  nav .links a{color:var(--ink);font-size:14.5px;font-weight:600;opacity:.85;transition:.2s}
+  nav .links a:hover{opacity:1;color:var(--blurple)}
+  .btn{background:var(--blurple);color:#fff!important;padding:9px 18px;border-radius:30px;font-size:14px;font-weight:600;box-shadow:0 4px 14px rgba(99,91,255,.35);transition:.25s}
+  .btn:hover{transform:translateY(-1px);background:var(--blurple-d)}
+  @media(max-width:820px){nav .links a:not(.btn){display:none}}
+
+  /* ===== HERO with skewed Stripe gradient ===== */
+  .hero{position:relative;padding:188px 0 150px;overflow:hidden}
+  .hero .grad{position:absolute;top:0;left:0;right:0;height:560px;z-index:-1;
+     transform:skewY(-7deg);transform-origin:0 0;
+     background:linear-gradient(102deg,#3ec6e0 0%,#4f8cf7 24%,#635bff 44%,#a855f7 63%,#ff6ec4 82%,#ffb46b 100%);}
+  .hero .grad::after{content:"";position:absolute;inset:0;background:
+     linear-gradient(100deg,rgba(10,37,64,.46) 0%,rgba(10,37,64,.26) 44%,rgba(10,37,64,.04) 70%),
+     linear-gradient(180deg,rgba(10,37,64,0) 60%,rgba(10,37,64,.22) 100%)}
+  .hero .ghost{position:absolute;right:-40px;top:80px;width:340px;opacity:.22;transform:rotate(-6deg);z-index:-1;filter:drop-shadow(0 20px 40px rgba(0,0,0,.15))}
+  .tag{display:inline-flex;align-items:center;gap:9px;background:rgba(255,255,255,.65);backdrop-filter:blur(6px);border:1px solid rgba(255,255,255,.8);color:var(--ink);padding:7px 16px;border-radius:30px;font-size:13px;letter-spacing:.02em;font-weight:600;margin-bottom:28px;box-shadow:var(--shadow-s)}
+  .tag::before{content:"";width:7px;height:7px;border-radius:50%;background:var(--blurple)}
+  .hero h1{font-size:clamp(40px,6.6vw,78px);font-weight:900;color:#fff;text-shadow:0 2px 30px rgba(10,37,64,.25);margin-bottom:6px}
+  .hero h1 .hl{background:linear-gradient(90deg,#fff,#ffe8c2);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent}
+  .hero .sub{font-size:clamp(18px,2.4vw,25px);color:#fff;font-weight:700;margin:14px 0 16px;text-shadow:0 2px 20px rgba(10,37,64,.25)}
+  .hero .desc{max-width:600px;color:#fff;font-size:16.5px;font-weight:600;text-shadow:0 0 2px rgba(10,37,64,.6),0 1px 3px rgba(10,37,64,.65),0 2px 16px rgba(10,37,64,.45)}
+  .hero .meta{margin-top:38px;display:flex;gap:14px;flex-wrap:wrap}
+  .hero .meta .chip{background:rgba(255,255,255,.92);border-radius:12px;padding:12px 18px;font-size:13.5px;color:var(--slate);box-shadow:var(--shadow);font-weight:500}
+  .hero .meta .chip b{color:var(--ink);font-weight:700}
+
+  /* ===== SECTION SHELL ===== */
+  section{padding:92px 0}
+  .eyebrow{display:inline-block;color:var(--blurple);font-weight:700;font-size:13.5px;letter-spacing:.06em;text-transform:uppercase;margin-bottom:14px}
+  .sec-title{font-size:clamp(28px,4vw,46px);font-weight:900;color:var(--ink);margin-bottom:18px;letter-spacing:-.03em}
+  .lead{font-size:18.5px;color:var(--slate);max-width:700px;margin-bottom:50px;font-weight:400}
+  .lead strong{color:var(--ink);font-weight:700}
+
+  .rv{opacity:0;transform:translateY(30px);transition:.85s cubic-bezier(.2,.7,.2,1)}
+  .rv.in{opacity:1;transform:none}
+
+  /* ===== THESIS (gradient band, skewed) ===== */
+  .thesis{position:relative;color:#fff;padding:96px 0;margin:30px 0;overflow:hidden}
+  .thesis .gb{position:absolute;inset:0;z-index:-1;transform:skewY(-4deg);
+     background:linear-gradient(102deg,#4f8cf7,#635bff 45%,#a855f7 80%,#ff6ec4)}
+  .thesis .q{font-size:clamp(23px,3.4vw,38px);font-weight:800;line-height:1.5;max-width:900px;letter-spacing:-.02em}
+  .thesis .q .gold{color:#ffe8c2}
+  .thesis .q .strike{color:#fff}
+  .thesis .verdict{margin-top:30px;display:inline-block;background:rgba(255,255,255,.16);border:1px solid rgba(255,255,255,.3);padding:12px 22px;border-radius:30px;font-size:15.5px;font-weight:600;backdrop-filter:blur(4px)}
+
+  /* ===== STAT CARDS ===== */
+  .stats{display:grid;grid-template-columns:repeat(4,1fr);gap:20px}
+  @media(max-width:860px){.stats{grid-template-columns:repeat(2,1fr)}}
+  @media(max-width:470px){.stats{grid-template-columns:1fr}}
+  .stat{background:#fff;border:1px solid var(--line);border-radius:16px;padding:28px 24px;box-shadow:var(--shadow);transition:.35s}
+  .stat:hover{transform:translateY(-5px);box-shadow:var(--shadow-l)}
+  .stat .num{font-weight:900;font-size:40px;color:var(--ink);line-height:1;letter-spacing:-.03em}
+  .stat .num.bad{color:var(--red)} .stat .num.good{color:var(--green)}
+  .stat .num small{font-size:19px;font-weight:700}
+  .stat .lbl{margin-top:13px;font-weight:700;color:var(--ink);font-size:15px}
+  .stat .note{margin-top:3px;color:var(--mute);font-size:13px}
+
+  /* ===== TIMELINE ===== */
+  .tl{position:relative;margin-left:8px;padding-left:34px;border-left:2px solid var(--line)}
+  .tl .item{position:relative;padding-bottom:32px}.tl .item:last-child{padding-bottom:0}
+  .tl .dot{position:absolute;left:-43px;top:3px;width:16px;height:16px;border-radius:50%;background:var(--blurple);box-shadow:0 0 0 5px #fff,0 0 0 6px var(--line)}
+  .tl .dot.red{background:var(--red)} .tl .dot.green{background:var(--green)}
+  .tl .yr{font-weight:900;font-size:21px;color:var(--ink)}
+  .tl .yr.red{color:var(--red)} .tl .yr.green{color:var(--green)}
+  .tl .txt{color:var(--slate);font-size:15.5px;margin-top:1px}
+
+  /* ===== SPLIT ===== */
+  .split{display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:center}
+  @media(max-width:820px){.split{grid-template-columns:1fr;gap:32px}}
+  .split img{width:100%;border-radius:16px;box-shadow:var(--shadow-l);border:6px solid #fff}
+  .rp-cap{display:inline-block;background:#EEF0FF;color:var(--blurple-d);font-size:13px;font-weight:600;padding:7px 14px;border-radius:8px;margin-top:16px}
+  .pills{display:flex;flex-direction:column;gap:14px}
+  .pill{background:#fff;border:1px solid var(--line);border-left:4px solid var(--blurple);border-radius:12px;padding:16px 20px;box-shadow:var(--shadow-s);transition:.3s}
+  .pill:hover{transform:translateX(4px);box-shadow:var(--shadow)}
+  .pill b{color:var(--ink);font-size:16px} .pill span{color:var(--mute);font-size:14px}
+
+  /* ===== TABLE ===== */
+  .tbl-wrap{overflow-x:auto;border-radius:16px;box-shadow:var(--shadow);border:1px solid var(--line)}
+  table{width:100%;border-collapse:collapse;background:#fff;min-width:640px}
+  thead{background:var(--ink);color:#fff}
+  th,td{padding:15px 18px;text-align:right;font-size:15px}
+  th:first-child,td:first-child{text-align:left;font-weight:700}
+  th{font-weight:600;letter-spacing:.02em}
+  tbody tr{border-top:1px solid var(--line)}
+  tbody tr:nth-child(even){background:var(--light)}
+  td.neg{color:var(--red);font-weight:700} td.pos{color:var(--green);font-weight:700}
+  td.land{color:#B45309;font-weight:800;background:#FEF6E7}
+  .tbl-note{color:var(--mute);font-size:13px;margin-top:14px}
+
+  /* ===== THREE STATEMENTS ===== */
+  #statements table{min-width:720px}
+  #statements th,#statements td{padding:11px 14px;font-size:14px}
+  #statements tbody tr.tot{background:#EEF2F7;font-weight:700}
+  #statements tbody tr.tot td{color:var(--ink)}
+  #statements tbody tr.tot td.neg{color:var(--red)} #statements tbody tr.tot td.land{color:#B45309}
+  .stmt-h{display:flex;align-items:baseline;gap:12px;font-size:22px;font-weight:800;color:var(--ink);margin:54px 0 18px}
+  .stmt-h:first-of-type{margin-top:8px}
+  .stmt-h span{font-size:13px;font-weight:600;color:var(--blurple);letter-spacing:.05em;text-transform:uppercase}
+  .analysis{margin-top:20px;background:#fff;border:1px solid var(--line);border-radius:16px;padding:24px 26px;box-shadow:var(--shadow-s)}
+  .analysis p{color:var(--slate);font-size:15.5px;margin:0}
+  .analysis p b{color:var(--ink)}
+  .analysis .rd{color:var(--red);font-weight:700} .analysis .ld{color:#B45309;font-weight:700}
+  .analysis .takeaway{margin-top:16px;padding:13px 18px;background:linear-gradient(90deg,#F2F0FF,#fff);border-left:4px solid var(--blurple);border-radius:10px;color:var(--ink);font-weight:700;font-size:15px}
+
+  /* ===== STRATEGY ===== */
+  .grid2{display:grid;grid-template-columns:1fr 1fr;gap:26px}
+  @media(max-width:820px){.grid2{grid-template-columns:1fr}}
+  .card{background:#fff;border:1px solid var(--line);border-radius:18px;padding:32px;box-shadow:var(--shadow);transition:.35s}
+  .card:hover{transform:translateY(-4px);box-shadow:var(--shadow-l)}
+  .card h3{color:var(--ink);font-size:21px;margin-bottom:18px;display:flex;align-items:center;gap:12px}
+  .card h3 .n{background:linear-gradient(135deg,var(--blurple),#a855f7);color:#fff;width:36px;height:36px;border-radius:10px;display:grid;place-items:center;font-size:16px;font-weight:800;flex:none;box-shadow:0 6px 16px rgba(99,91,255,.4)}
+  .card ul{list-style:none}
+  .card li{padding:11px 0 11px 26px;position:relative;border-top:1px solid var(--line);font-size:15px;color:var(--slate)}
+  .card li:first-child{border-top:none}
+  .card li::before{content:"";position:absolute;left:3px;top:19px;width:8px;height:8px;border-radius:50%;background:var(--blurple)}
+  .card li b{color:var(--ink)}
+
+  /* ===== CONCLUSION (gradient CTA) ===== */
+  .concl{position:relative;color:#fff;text-align:center;padding:120px 0;overflow:hidden;margin-top:40px}
+  .concl .gb{position:absolute;inset:0;z-index:-1;transform:skewY(-5deg);transform-origin:100% 0;
+     background:linear-gradient(102deg,#3ec6e0,#4f8cf7 28%,#635bff 52%,#a855f7 76%,#ff6ec4)}
+  .concl .big{font-size:clamp(30px,5.2vw,60px);font-weight:900;line-height:1.25;letter-spacing:-.03em}
+  .concl .big .x{color:#ffd2cf} .concl .big .o{color:#fff6e2}
+  .concl p{color:rgba(255,255,255,.95);max-width:660px;margin:26px auto 0;font-weight:400;font-size:16.5px}
+
+  /* ===== FOOTER ===== */
+  footer{background:var(--ink);color:rgba(255,255,255,.55);padding:42px 0;font-size:13.5px}
+  footer .wrap{display:flex;justify-content:space-between;flex-wrap:wrap;gap:14px}
+  footer b{color:rgba(255,255,255,.85);font-weight:600}
+</style>
+</head>
+<body>
+
+<nav id="nav">
+  <div class="wrap">
+    <div class="brand"><img src="assets/logo.png" alt="logo">大西洋飲料 1213</div>
+    <div class="links">
+      <a href="#summary">摘要</a>
+      <a href="#story">公司歷程</a>
+      <a href="#related">關係人</a>
+      <a href="#statements">三大表</a>
+      <a href="#strategy">策略建議</a>
+      <a href="#verdict" class="btn">結論</a>
+    </div>
+  </div>
+</nav>
+
+<!-- HERO -->
+<header class="hero">
+  <div class="grad"></div>
+  <img class="ghost" src="assets/logo.png" alt="">
+  <div class="wrap">
+    <span class="tag">TWSE 1213 ・ 財務報表深度解析</span>
+    <h1>一場<span class="hl">會計煙火</span>,<br>還是體質重生?</h1>
+    <div class="sub">大西洋飲料股份有限公司 ── 「蘋果西打」的財報真相</div>
+    <p class="desc">一家 60 年國民品牌,差點下市,又靠賣地起死回生。但帳面突然大賺的 EPS 8.71,究竟是浴火重生,還是一場精心包裝的會計煙火?</p>
+    <div class="meta">
+      <span class="chip">分析期間　<b>109–114 年度（2020–2025）</b></span>
+      <span class="chip">製作　<b>政大 EMBA・第六組</b></span>
+    </div>
+  </div>
+</header>
+
+<!-- THESIS -->
+<section class="thesis">
+  <div class="gb"></div>
+  <div class="wrap">
+    <p class="q">113 年帳面淨利 <span class="gold">4.93 億</span>、EPS <span class="gold">8.71 元</span> ──<br><span class="strike">完全來自賣土地的一次性業外利益</span>,<br>本業營業淨利其實仍<span class="gold">虧損 8,531 萬</span>。</p>
+    <div class="verdict">我們的判斷：斷尾求生,不等於體質重生。</div>
+  </div>
+</section>
+
+<!-- SUMMARY -->
+<section id="summary">
+  <div class="wrap">
+    <div class="rv"><span class="eyebrow">Executive Summary</span>
+    <h2 class="sec-title">一頁看懂大飲</h2>
+    <p class="lead">四環危機環環相扣：<strong>本業負毛利 → 以短支長 → 會計師示警 → 賣地求生</strong>。未來唯一要證明的,只有兩個 KPI：毛利由負轉正、把關係人欠的錢收回來。</p></div>
+    <div class="stats">
+      <div class="stat rv"><div class="num bad">-8,531<small> 萬</small></div><div class="lbl">本業營業淨利</div><div class="note">113 年・剔除賣地後的真相</div></div>
+      <div class="stat rv"><div class="num bad">5<small> 年</small></div><div class="lbl">連續負毛利</div><div class="note">毛利率 -2.3% ～ -78.3%</div></div>
+      <div class="stat rv"><div class="num">85<small>%</small></div><div class="lbl">銷貨集中單一關係人</div><div class="note">總經銷旭順・應收 99%</div></div>
+      <div class="stat rv"><div class="num good">9.6<small> 億</small></div><div class="lbl">賣地清償全部負債</div><div class="note">負債比 21.5% → 9.5%</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- STORY -->
+<section id="story" style="background:var(--light)">
+  <div class="wrap">
+    <div class="rv"><span class="eyebrow">The Story</span>
+    <h2 class="sec-title">60 年品牌，兩次致命傷</h2>
+    <p class="lead">一次是「人」的問題（掏空），一次是「貨」的問題（食安）。</p></div>
+    <div class="tl rv">
+      <div class="item"><div class="dot"></div><div class="yr">1965</div><div class="txt">創立,推出台灣首款蘋果口味汽水「蘋菓西打」。</div></div>
+      <div class="item"><div class="dot"></div><div class="yr">1981</div><div class="txt">股票掛牌上市（代號 1213）,全台首家上市飲料公司。</div></div>
+      <div class="item"><div class="dot"></div><div class="yr">2015</div><div class="txt">碳酸飲料市場萎縮,公司營收進入下滑趨勢。</div></div>
+      <div class="item"><div class="dot red"></div><div class="yr red">2018</div><div class="txt">會計師出具「無法表示意見」;前總經理涉嫌掏空逾 1 億元。</div></div>
+      <div class="item"><div class="dot red"></div><div class="yr red">2023</div><div class="txt">食安危機:99% 產線停工,月營收出現負值,幾近停業。</div></div>
+      <div class="item"><div class="dot green"></div><div class="yr green">2024</div><div class="txt">賣地 9.6 億清償全部負債,宣告「蘋菓西打重磅回歸!」</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- RELATED PARTY -->
+<section id="related">
+  <div class="wrap">
+    <div class="rv"><span class="eyebrow">Related-Party Risk</span>
+    <h2 class="sec-title">帳面有營收，口袋沒現金</h2>
+    <p class="lead">最大的風險不在市場,而在<strong>關係人高度集中</strong>。當你的客戶、地主、債務對象都是「自己人」,財報上的營收與資產,含金量就要打上問號。</p></div>
+    <div class="split">
+      <div class="rv">
+        <img src="assets/wall.png" alt="三家公司同總部">
+        <span class="rp-cap">大西洋飲料・旭順食品・國信食品 ── 招牌並列於同一面牆</span>
+      </div>
+      <div class="pills rv">
+        <div class="pill"><b>銷貨高度集中</b><br><span>對單一總經銷商旭順銷貨,占銷貨比重約 85%</span></div>
+        <div class="pill"><b>應收高度集中</b><br><span>應收帳款-關係人約 5,228 萬,占應收約 99%</span></div>
+        <div class="pill"><b>授信期偏長</b><br><span>月結 90 天,較一般飲品業長</span></div>
+        <div class="pill"><b>歷史傷口</b><br><span>108 年掏空案遺留關係人呆帳,曾遭會計師出具保留意見</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- THREE STATEMENTS -->
+<section id="statements" style="background:var(--light)">
+  <div class="wrap">
+    <div class="rv"><span class="eyebrow">Financial Statements</span>
+    <h2 class="sec-title">三大報表，六年攤開來看</h2>
+    <p class="lead">財報分析的核心,就是把<strong>損益表、資產負債表、現金流量表</strong>放在一起看。數字單位為仟元;<span style="color:var(--red);font-weight:600">紅字</span>為負值,<span style="color:#B45309;font-weight:600">金字</span>為 113 年賣地造成的一次性異常。</p></div>
+
+    <h3 class="stmt-h rv">損益表 <span>Income Statement</span></h3>
+    <div class="tbl-wrap rv"><table><thead><tr><th>項目</th><th>109</th><th>110</th><th>111</th><th>112</th><th>113</th><th>114</th></tr></thead><tbody><tr><td>營業收入</td><td>409,612</td><td>428,407</td><td>393,947</td><td>120,702</td><td>190,548</td><td>297,365</td></tr><tr><td>營業成本</td><td class="neg">(404,063)</td><td class="neg">(438,426)</td><td class="neg">(405,814)</td><td class="neg">(215,158)</td><td class="neg">(233,019)</td><td class="neg">(304,768)</td></tr><tr class="tot"><td>營業毛(損)利</td><td>5,549</td><td class="neg">(10,019)</td><td class="neg">(11,867)</td><td class="neg">(94,456)</td><td class="neg">(42,471)</td><td class="neg">(7,403)</td></tr><tr><td>毛利率</td><td>1.4%</td><td class="neg">-2.3%</td><td class="neg">-3.0%</td><td class="neg">-78.3%</td><td class="neg">-22.3%</td><td class="neg">-2.5%</td></tr><tr><td>營業費用</td><td class="neg">(57,997)</td><td class="neg">(55,503)</td><td class="neg">(55,550)</td><td class="neg">(47,458)</td><td class="neg">(42,847)</td><td class="neg">(40,700)</td></tr><tr class="tot"><td>營業利益(損)</td><td class="neg">(52,448)</td><td class="neg">(65,522)</td><td class="neg">(67,417)</td><td class="neg">(141,914)</td><td class="neg">(85,318)</td><td class="neg">(48,103)</td></tr><tr><td>營業利益率</td><td class="neg">-12.8%</td><td class="neg">-15.3%</td><td class="neg">-17.1%</td><td class="neg">-117.6%</td><td class="neg">-44.8%</td><td class="neg">-16.2%</td></tr><tr><td>其他利益及損失</td><td class="neg">(7,012)</td><td class="neg">(23,118)</td><td class="neg">(36)</td><td>34,334</td><td class="land">613,712</td><td class="neg">(403)</td></tr><tr class="tot"><td>本期淨利(損)</td><td class="neg">(27,252)</td><td class="neg">(94,436)</td><td class="neg">(75,809)</td><td class="neg">(138,689)</td><td class="land">493,229</td><td class="neg">(48,380)</td></tr><tr><td>每股盈餘(元)</td><td class="neg">-0.48</td><td class="neg">-1.67</td><td class="neg">-1.34</td><td class="neg">-2.45</td><td class="land">8.71</td><td class="neg">-0.85</td></tr></tbody></table></div>
+    <div class="analysis rv">
+      <p>營收從 110 年全盛的 <b>4.28 億</b>一路跌到 112 年僅 <b>1.2 億</b>,114 年回升到 2.94 億,仍只有全盛期的 <b>68%</b>。更嚴重的是毛利:<b>連續五年負毛利</b>,112 年因停工固定成本無法分攤,毛利率崩到 <span class="rd">−78.3%</span>。唯一帳面大賺的 113 年(淨利 4.93 億、EPS 8.71),其實來自「其他利益及損失」<span class="ld">+6.14 億</span>的賣地進帳——本業營業利益仍虧 <span class="rd">8,531 萬</span>。</p>
+      <div class="takeaway">本業連續五年「賣一瓶賠一瓶」,EPS 8.71 是賣地、不是賣汽水。</div>
+    </div>
+
+    <h3 class="stmt-h rv">資產負債表 <span>Balance Sheet</span></h3>
+    <div class="tbl-wrap rv"><table><thead><tr><th>項目</th><th>109</th><th>110</th><th>111</th><th>112</th><th>113</th><th>114</th></tr></thead><tbody><tr><td>現金及約當現金</td><td>29,094</td><td>7,539</td><td>8,683</td><td>1,125</td><td class="land">143,072</td><td>45,065</td></tr><tr><td>應收帳款-關係人</td><td>80,142</td><td>88,850</td><td>94,816</td><td>3,446</td><td>28,551</td><td>52,283</td></tr><tr><td>存貨</td><td>36,985</td><td>30,196</td><td>20,146</td><td>14,216</td><td>24,286</td><td>33,811</td></tr><tr><td>其他金融資產(受限)</td><td>10,152</td><td>10,000</td><td>10,000</td><td>5,000</td><td class="land">203,000</td><td>187,000</td></tr><tr class="tot"><td>流動資產合計</td><td>233,569</td><td>177,818</td><td>136,105</td><td>32,646</td><td>361,486</td><td>285,471</td></tr><tr><td>不動產廠房及設備</td><td>741,826</td><td>668,222</td><td>658,261</td><td>545,527</td><td>149,300</td><td>140,618</td></tr><tr><td>預付設備款(幽靈資產)</td><td>—</td><td>223,886</td><td>223,069</td><td>222,349</td><td>222,504</td><td>226,093</td></tr><tr class="tot"><td>非流動資產合計</td><td>1,021,712</td><td>945,034</td><td>922,279</td><td>786,679</td><td>434,553</td><td>496,908</td></tr><tr class="tot"><td>資產總計</td><td>1,255,281</td><td>1,122,852</td><td>1,058,384</td><td>819,325</td><td>796,039</td><td>782,379</td></tr><tr><td>流動負債合計</td><td>481,501</td><td>495,725</td><td>215,923</td><td>554,815</td><td>74,498</td><td>73,495</td></tr><tr><td>長短期借款</td><td>595,000</td><td>531,970</td><td>487,682</td><td>444,664</td><td>0</td><td>0</td></tr><tr class="tot"><td>負債總計</td><td>719,135</td><td>681,137</td><td>692,490</td><td>592,119</td><td>75,601</td><td>130,125</td></tr><tr class="tot"><td>權益總計</td><td>536,146</td><td>441,715</td><td>365,894</td><td>227,206</td><td>720,438</td><td>652,254</td></tr></tbody></table></div>
+    <div class="analysis rv">
+      <p>113 年賣地是資產負債表的分水嶺:不動產從 <b>5.46 億 → 1.49 億</b>、長短期借款 <b>4.45 億一次清零</b>,負債總計從 5.92 億壓到 <b>7,560 萬</b>,權益由 2.27 億回升到 <b>7.20 億</b>。但有兩個紅旗:① 受限制的「其他金融資產」暴增到 <span class="ld">2 億</span>(賣地款被質押/凍結);② 掛帳多年的「預付設備款」<span class="rd">2.26 億</span>是疑似收不回的幽靈資產。應收帳款更幾乎全集中在關係人。</p>
+      <div class="takeaway">帳面變乾淨靠的是賣祖產,不是本業累積;幽靈資產與受限資金仍是未爆彈。</div>
+    </div>
+
+    <h3 class="stmt-h rv">現金流量表 <span>Cash Flow Statement</span></h3>
+    <div class="tbl-wrap rv"><table><thead><tr><th>項目</th><th>109</th><th>110</th><th>111</th><th>112</th><th>113</th><th>114</th></tr></thead><tbody><tr><td>稅前淨利(損)</td><td class="neg">(30,561)</td><td class="neg">(94,151)</td><td class="neg">(75,811)</td><td class="neg">(118,485)</td><td class="land">518,930</td><td class="neg">(45,659)</td></tr><tr><td>折舊及攤銷</td><td>17,654</td><td>16,690</td><td>16,801</td><td>16,215</td><td>14,696</td><td>17,092</td></tr><tr class="tot"><td>營業活動淨現金流</td><td class="neg">(3,781)</td><td class="neg">(27,646)</td><td>9,796</td><td class="neg">(79,026)</td><td class="neg">(361,717)</td><td class="neg">(62,013)</td></tr><tr><td>　└ 處分不動產進帳</td><td>—</td><td>—</td><td>—</td><td>132,791</td><td class="land">1,002,128</td><td>0</td></tr><tr class="tot"><td>投資活動淨現金流</td><td class="neg">(16,301)</td><td>69,040</td><td class="neg">(66)</td><td>144,467</td><td class="land">954,286</td><td class="neg">(10,558)</td></tr><tr><td>　└ 償還長期借款</td><td class="neg">(36,000)</td><td class="neg">(79,030)</td><td class="neg">(44,288)</td><td class="neg">(73,018)</td><td class="neg">(444,664)</td><td>0</td></tr><tr class="tot"><td>籌資活動淨現金流</td><td>14,289</td><td class="neg">(62,954)</td><td class="neg">(8,574)</td><td class="neg">(73,000)</td><td class="neg">(450,625)</td><td class="neg">(25,289)</td></tr><tr><td>本期現金淨增(減)</td><td class="neg">(5,803)</td><td class="neg">(21,555)</td><td>1,144</td><td class="neg">(7,558)</td><td>141,947</td><td class="neg">(97,860)</td></tr><tr class="tot"><td>期末現金餘額</td><td>29,094</td><td>7,539</td><td>8,683</td><td>1,125</td><td class="land">143,072</td><td>44,413</td></tr></tbody></table></div>
+    <div class="analysis rv">
+      <p>三條主線看懂大飲的現金:<b>①</b> 營業活動(本業)近六年只有 111 年微正,113 年大失血 <span class="rd">3.62 億</span>,本業無法自己產生現金;<b>②</b> 投資活動 113 年 <span class="ld">+9.54 億</span>,全部來自處分不動產 10.02 億(賣地);<b>③</b> 籌資活動 113 年 <span class="rd">−4.51 億</span>,就是拿賣地款一次還清長期借款 4.45 億。賣地紅利讓期末現金衝到 1.43 億,但 114 年無地可賣、本業續流出,現金一年內<b>腰斬回 4,441 萬</b>。</p>
+      <div class="takeaway">賣地的錢一進一出:還債一次用掉、本業繼續燒,紅利一年內燒光。</div>
+    </div>
+
+    <p class="tbl-note">資料來源:公開資訊觀測站(MOPS) 1213 合併財報／財報狗／Goodinfo。括號為負值。</p>
+  </div>
+</section>
+
+<!-- STRATEGY -->
+<section id="strategy">
+  <div class="wrap">
+    <div class="rv"><span class="eyebrow">Strategy</span>
+    <h2 class="sec-title">賣地只能救急，救命的是讓汽水賺錢</h2>
+    <p class="lead">核心目標只有一句：讓本業從<strong>負毛利回到正毛利</strong>,本業重新具備造血能力。</p></div>
+    <div class="grid2">
+      <div class="card rv">
+        <h3><span class="n">1</span>營運模式變更</h3>
+        <ul>
+          <li><b>生產委外、輕資產化</b>：產線委外代工,把廠房固定成本變成變動成本,先止血。</li>
+          <li><b>重整關係人總經銷</b>：收回通路主導權,直接對接四大超商與量販,讓營收變成真現金。</li>
+        </ul>
+      </div>
+      <div class="card rv">
+        <h3><span class="n">2</span>資本結構重組</h3>
+        <ul>
+          <li><b>續處分閒置資產</b>：持續盤點處分無助本業的閒置資產。</li>
+          <li><b>解決預付土地款爭議</b>：以法律或協商收回積壓在關係人手中的資金。</li>
+          <li><b>引進策略投資人與增資</b>：賣地僅救急,長遠靠具通路/供應鏈背景的投資人增資。</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- VERDICT -->
+<section id="verdict" class="concl">
+  <div class="gb"></div>
+  <div class="wrap rv">
+    <div class="big">斷尾求生<span class="x"> ≠ </span><span class="o">體質重生</span></div>
+    <p>所謂「重磅回歸」與 EPS 8.71,完全建立在賣地的一次性利益上,是會計帳面的煙火,不是體質重生。若未來三個季度不能把毛利轉正、把關係人欠款收回,這個國民品牌的價值,會被財務黑洞慢慢吃光。</p>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <span>大西洋飲料 1213 ・ 財務報表深度解析　|　政大 EMBA 第六組</span>
+    <span><b>資料期間</b> 109–114 年度（2020–2025）</span>
+  </div>
+</footer>
+
+<script>
+  const nav=document.getElementById('nav');
+  addEventListener('scroll',()=>nav.classList.toggle('solid',scrollY>60));
+  const io=new IntersectionObserver((es)=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}}),{threshold:.14});
+  document.querySelectorAll('.rv').forEach((el,i)=>{el.style.transitionDelay=(i%4*70)+'ms';io.observe(el)});
+</script>
+</body>
+</html>
