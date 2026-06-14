@@ -160,6 +160,35 @@
   footer{background:var(--ink);color:rgba(255,255,255,.55);padding:42px 0;font-size:13.5px}
   footer .wrap{display:flex;justify-content:space-between;flex-wrap:wrap;gap:14px}
   footer b{color:rgba(255,255,255,.85);font-weight:600}
+
+  /* ===== 手機版滑動提示 ===== */
+  .swipe-hint{display:none;color:var(--blurple);font-weight:600;font-size:13px;margin:0 0 10px;text-align:center;background:#EEF0FF;padding:9px;border-radius:10px}
+
+  /* ===== MOBILE ===== */
+  @media(max-width:700px){
+    section{padding:58px 0}
+    .wrap{padding:0 20px}
+    .hero{padding:124px 0 84px}
+    .hero .grad{height:470px}
+    .hero h1{font-size:36px}
+    .hero .sub{font-size:18px}
+    .hero .desc{font-size:15.5px}
+    .hero .meta{flex-direction:column;gap:10px}
+    .hero .meta .chip{font-size:12.5px}
+    .sec-title{font-size:27px}
+    .lead{font-size:16px;margin-bottom:32px}
+    .thesis{padding:60px 0}
+    .thesis .q{font-size:21px;line-height:1.6}
+    .thesis .verdict{font-size:14px}
+    .concl{padding:78px 0}
+    .concl .big{font-size:30px}
+    .stmt-h{font-size:19px;margin:38px 0 6px}
+    .swipe-hint{display:block}
+    .analysis{padding:20px}
+    .analysis p{font-size:15px}
+    .split{gap:24px}
+    footer .wrap{flex-direction:column;gap:6px}
+  }
 </style>
 </head>
 <body>
@@ -264,6 +293,7 @@
     <p class="lead">財報分析的核心,就是把<strong>損益表、資產負債表、現金流量表</strong>放在一起看。數字單位為仟元;<span style="color:var(--red);font-weight:600">紅字</span>為負值,<span style="color:#B45309;font-weight:600">金字</span>為 113 年賣地造成的一次性異常。</p></div>
 
     <h3 class="stmt-h rv">損益表 <span>Income Statement</span></h3>
+    <p class="swipe-hint">← 左右滑動看 109–114 年 →</p>
     <div class="tbl-wrap rv"><table><thead><tr><th>項目</th><th>109</th><th>110</th><th>111</th><th>112</th><th>113</th><th>114</th></tr></thead><tbody><tr><td>營業收入</td><td>409,612</td><td>428,407</td><td>393,947</td><td>120,702</td><td>190,548</td><td>297,365</td></tr><tr><td>營業成本</td><td class="neg">(404,063)</td><td class="neg">(438,426)</td><td class="neg">(405,814)</td><td class="neg">(215,158)</td><td class="neg">(233,019)</td><td class="neg">(304,768)</td></tr><tr class="tot"><td>營業毛(損)利</td><td>5,549</td><td class="neg">(10,019)</td><td class="neg">(11,867)</td><td class="neg">(94,456)</td><td class="neg">(42,471)</td><td class="neg">(7,403)</td></tr><tr><td>毛利率</td><td>1.4%</td><td class="neg">-2.3%</td><td class="neg">-3.0%</td><td class="neg">-78.3%</td><td class="neg">-22.3%</td><td class="neg">-2.5%</td></tr><tr><td>營業費用</td><td class="neg">(57,997)</td><td class="neg">(55,503)</td><td class="neg">(55,550)</td><td class="neg">(47,458)</td><td class="neg">(42,847)</td><td class="neg">(40,700)</td></tr><tr class="tot"><td>營業利益(損)</td><td class="neg">(52,448)</td><td class="neg">(65,522)</td><td class="neg">(67,417)</td><td class="neg">(141,914)</td><td class="neg">(85,318)</td><td class="neg">(48,103)</td></tr><tr><td>營業利益率</td><td class="neg">-12.8%</td><td class="neg">-15.3%</td><td class="neg">-17.1%</td><td class="neg">-117.6%</td><td class="neg">-44.8%</td><td class="neg">-16.2%</td></tr><tr><td>其他利益及損失</td><td class="neg">(7,012)</td><td class="neg">(23,118)</td><td class="neg">(36)</td><td>34,334</td><td class="land">613,712</td><td class="neg">(403)</td></tr><tr class="tot"><td>本期淨利(損)</td><td class="neg">(27,252)</td><td class="neg">(94,436)</td><td class="neg">(75,809)</td><td class="neg">(138,689)</td><td class="land">493,229</td><td class="neg">(48,380)</td></tr><tr><td>每股盈餘(元)</td><td class="neg">-0.48</td><td class="neg">-1.67</td><td class="neg">-1.34</td><td class="neg">-2.45</td><td class="land">8.71</td><td class="neg">-0.85</td></tr></tbody></table></div>
     <div class="analysis rv">
       <p>營收從 110 年全盛的 <b>4.28 億</b>一路跌到 112 年僅 <b>1.2 億</b>,114 年回升到 2.94 億,仍只有全盛期的 <b>68%</b>。更嚴重的是毛利:<b>連續五年負毛利</b>,112 年因停工固定成本無法分攤,毛利率崩到 <span class="rd">−78.3%</span>。唯一帳面大賺的 113 年(淨利 4.93 億、EPS 8.71),其實來自「其他利益及損失」<span class="ld">+6.14 億</span>的賣地進帳——本業營業利益仍虧 <span class="rd">8,531 萬</span>。</p>
@@ -271,6 +301,7 @@
     </div>
 
     <h3 class="stmt-h rv">資產負債表 <span>Balance Sheet</span></h3>
+    <p class="swipe-hint">← 左右滑動看 109–114 年 →</p>
     <div class="tbl-wrap rv"><table><thead><tr><th>項目</th><th>109</th><th>110</th><th>111</th><th>112</th><th>113</th><th>114</th></tr></thead><tbody><tr><td>現金及約當現金</td><td>29,094</td><td>7,539</td><td>8,683</td><td>1,125</td><td class="land">143,072</td><td>45,065</td></tr><tr><td>應收帳款-關係人</td><td>80,142</td><td>88,850</td><td>94,816</td><td>3,446</td><td>28,551</td><td>52,283</td></tr><tr><td>存貨</td><td>36,985</td><td>30,196</td><td>20,146</td><td>14,216</td><td>24,286</td><td>33,811</td></tr><tr><td>其他金融資產(受限)</td><td>10,152</td><td>10,000</td><td>10,000</td><td>5,000</td><td class="land">203,000</td><td>187,000</td></tr><tr class="tot"><td>流動資產合計</td><td>233,569</td><td>177,818</td><td>136,105</td><td>32,646</td><td>361,486</td><td>285,471</td></tr><tr><td>不動產廠房及設備</td><td>741,826</td><td>668,222</td><td>658,261</td><td>545,527</td><td>149,300</td><td>140,618</td></tr><tr><td>預付設備款(幽靈資產)</td><td>—</td><td>223,886</td><td>223,069</td><td>222,349</td><td>222,504</td><td>226,093</td></tr><tr class="tot"><td>非流動資產合計</td><td>1,021,712</td><td>945,034</td><td>922,279</td><td>786,679</td><td>434,553</td><td>496,908</td></tr><tr class="tot"><td>資產總計</td><td>1,255,281</td><td>1,122,852</td><td>1,058,384</td><td>819,325</td><td>796,039</td><td>782,379</td></tr><tr><td>流動負債合計</td><td>481,501</td><td>495,725</td><td>215,923</td><td>554,815</td><td>74,498</td><td>73,495</td></tr><tr><td>長短期借款</td><td>595,000</td><td>531,970</td><td>487,682</td><td>444,664</td><td>0</td><td>0</td></tr><tr class="tot"><td>負債總計</td><td>719,135</td><td>681,137</td><td>692,490</td><td>592,119</td><td>75,601</td><td>130,125</td></tr><tr class="tot"><td>權益總計</td><td>536,146</td><td>441,715</td><td>365,894</td><td>227,206</td><td>720,438</td><td>652,254</td></tr></tbody></table></div>
     <div class="analysis rv">
       <p>113 年賣地是資產負債表的分水嶺:不動產從 <b>5.46 億 → 1.49 億</b>、長短期借款 <b>4.45 億一次清零</b>,負債總計從 5.92 億壓到 <b>7,560 萬</b>,權益由 2.27 億回升到 <b>7.20 億</b>。但有兩個紅旗:① 受限制的「其他金融資產」暴增到 <span class="ld">2 億</span>(賣地款被質押/凍結);② 掛帳多年的「預付設備款」<span class="rd">2.26 億</span>是疑似收不回的幽靈資產。應收帳款更幾乎全集中在關係人。</p>
@@ -278,6 +309,7 @@
     </div>
 
     <h3 class="stmt-h rv">現金流量表 <span>Cash Flow Statement</span></h3>
+    <p class="swipe-hint">← 左右滑動看 109–114 年 →</p>
     <div class="tbl-wrap rv"><table><thead><tr><th>項目</th><th>109</th><th>110</th><th>111</th><th>112</th><th>113</th><th>114</th></tr></thead><tbody><tr><td>稅前淨利(損)</td><td class="neg">(30,561)</td><td class="neg">(94,151)</td><td class="neg">(75,811)</td><td class="neg">(118,485)</td><td class="land">518,930</td><td class="neg">(45,659)</td></tr><tr><td>折舊及攤銷</td><td>17,654</td><td>16,690</td><td>16,801</td><td>16,215</td><td>14,696</td><td>17,092</td></tr><tr class="tot"><td>營業活動淨現金流</td><td class="neg">(3,781)</td><td class="neg">(27,646)</td><td>9,796</td><td class="neg">(79,026)</td><td class="neg">(361,717)</td><td class="neg">(62,013)</td></tr><tr><td>　└ 處分不動產進帳</td><td>—</td><td>—</td><td>—</td><td>132,791</td><td class="land">1,002,128</td><td>0</td></tr><tr class="tot"><td>投資活動淨現金流</td><td class="neg">(16,301)</td><td>69,040</td><td class="neg">(66)</td><td>144,467</td><td class="land">954,286</td><td class="neg">(10,558)</td></tr><tr><td>　└ 償還長期借款</td><td class="neg">(36,000)</td><td class="neg">(79,030)</td><td class="neg">(44,288)</td><td class="neg">(73,018)</td><td class="neg">(444,664)</td><td>0</td></tr><tr class="tot"><td>籌資活動淨現金流</td><td>14,289</td><td class="neg">(62,954)</td><td class="neg">(8,574)</td><td class="neg">(73,000)</td><td class="neg">(450,625)</td><td class="neg">(25,289)</td></tr><tr><td>本期現金淨增(減)</td><td class="neg">(5,803)</td><td class="neg">(21,555)</td><td>1,144</td><td class="neg">(7,558)</td><td>141,947</td><td class="neg">(97,860)</td></tr><tr class="tot"><td>期末現金餘額</td><td>29,094</td><td>7,539</td><td>8,683</td><td>1,125</td><td class="land">143,072</td><td>44,413</td></tr></tbody></table></div>
     <div class="analysis rv">
       <p>三條主線看懂大飲的現金:<b>①</b> 營業活動(本業)近六年只有 111 年微正,113 年大失血 <span class="rd">3.62 億</span>,本業無法自己產生現金;<b>②</b> 投資活動 113 年 <span class="ld">+9.54 億</span>,全部來自處分不動產 10.02 億(賣地);<b>③</b> 籌資活動 113 年 <span class="rd">−4.51 億</span>,就是拿賣地款一次還清長期借款 4.45 億。賣地紅利讓期末現金衝到 1.43 億,但 114 年無地可賣、本業續流出,現金一年內<b>腰斬回 4,441 萬</b>。</p>
