@@ -9,10 +9,12 @@
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Noto+Sans+TC:wght@400;500;700;900&display=swap" rel="stylesheet">
 <style>
   :root{
-    --blurple:#635BFF; --blurple-d:#4b45c6;
-    --ink:#0A2540; --slate:#425466; --mute:#697386;
-    --light:#F6F9FC; --line:#E3E8EE; --white:#fff;
-    --red:#DF1B41; --green:#0E9F6E;
+    --blurple:#1E7A46; --blurple-d:#124F2E;          /* 蘋果綠 主色 / 深森林綠 */
+    --dark:#0E3A24;                                    /* 最深綠 (深底:表頭/頁尾/結論) */
+    --ink:#232A2A; --slate:#55605C; --mute:#8A938E;
+    --light:#F1F7F2; --line:#E4E9E5; --white:#fff;
+    --red:#C8362B; --green:#1E8E5A;                    /* 西打紅 / 正值綠 */
+    --gold:#E0A92E; --gold-d:#B98618; --gold-t:#FBF3DF;/* 金黃點綴 */
     --shadow-s:0 2px 5px -1px rgba(50,50,93,.10),0 1px 3px -1px rgba(0,0,0,.06);
     --shadow:0 15px 35px rgba(60,66,87,.08),0 5px 15px rgba(0,0,0,.06);
     --shadow-l:0 30px 60px -12px rgba(50,50,93,.22),0 18px 36px -18px rgba(0,0,0,.25);
@@ -34,7 +36,7 @@
   nav .links{display:flex;gap:30px;align-items:center}
   nav .links a{color:var(--ink);font-size:14.5px;font-weight:600;opacity:.85;transition:.2s}
   nav .links a:hover{opacity:1;color:var(--blurple)}
-  .btn{background:var(--blurple);color:#fff!important;padding:9px 18px;border-radius:30px;font-size:14px;font-weight:600;box-shadow:0 4px 14px rgba(99,91,255,.35);transition:.25s}
+  .btn{background:var(--blurple);color:#fff!important;padding:9px 18px;border-radius:30px;font-size:14px;font-weight:600;box-shadow:0 4px 14px rgba(30,122,70,.32);transition:.25s}
   .btn:hover{transform:translateY(-1px);background:var(--blurple-d)}
   @media(max-width:820px){nav .links a:not(.btn){display:none}}
 
@@ -42,10 +44,10 @@
   .hero{position:relative;padding:188px 0 150px;overflow:hidden}
   .hero .grad{position:absolute;top:0;left:0;right:0;height:560px;z-index:-1;
      transform:skewY(-7deg);transform-origin:0 0;
-     background:linear-gradient(102deg,#3ec6e0 0%,#4f8cf7 24%,#635bff 44%,#a855f7 63%,#ff6ec4 82%,#ffb46b 100%);}
+     background:linear-gradient(102deg,#0E5A34 0%,#1E7A46 30%,#2E9E5B 55%,#7FB733 78%,#E0A92E 100%);}
   .hero .grad::after{content:"";position:absolute;inset:0;background:
-     linear-gradient(100deg,rgba(10,37,64,.46) 0%,rgba(10,37,64,.26) 44%,rgba(10,37,64,.04) 70%),
-     linear-gradient(180deg,rgba(10,37,64,0) 60%,rgba(10,37,64,.22) 100%)}
+     linear-gradient(100deg,rgba(10,45,28,.48) 0%,rgba(10,45,28,.26) 44%,rgba(10,45,28,.04) 70%),
+     linear-gradient(180deg,rgba(10,45,28,0) 60%,rgba(10,45,28,.22) 100%)}
   .hero .ghost{position:absolute;right:-40px;top:80px;width:340px;opacity:.22;transform:rotate(-6deg);z-index:-1;filter:drop-shadow(0 20px 40px rgba(0,0,0,.15))}
   .tag{display:inline-flex;align-items:center;gap:9px;background:rgba(255,255,255,.65);backdrop-filter:blur(6px);border:1px solid rgba(255,255,255,.8);color:var(--ink);padding:7px 16px;border-radius:30px;font-size:13px;letter-spacing:.02em;font-weight:600;margin-bottom:28px;box-shadow:var(--shadow-s)}
   .tag::before{content:"";width:7px;height:7px;border-radius:50%;background:var(--blurple)}
@@ -70,7 +72,7 @@
   /* ===== THESIS (gradient band, skewed) ===== */
   .thesis{position:relative;color:#fff;padding:96px 0;margin:30px 0;overflow:hidden}
   .thesis .gb{position:absolute;inset:0;z-index:-1;transform:skewY(-4deg);
-     background:linear-gradient(102deg,#4f8cf7,#635bff 45%,#a855f7 80%,#ff6ec4)}
+     background:linear-gradient(102deg,#124F2E,#1E7A46 48%,#2E9E5B 84%,#7FB733)}
   .thesis .q{font-size:clamp(23px,3.4vw,38px);font-weight:800;line-height:1.5;max-width:900px;letter-spacing:-.02em}
   .thesis .q .gold{color:#ffe8c2}
   .thesis .q .strike{color:#fff}
@@ -101,7 +103,7 @@
   .split{display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:center}
   @media(max-width:820px){.split{grid-template-columns:1fr;gap:32px}}
   .split img{width:100%;border-radius:16px;box-shadow:var(--shadow-l);border:6px solid #fff}
-  .rp-cap{display:inline-block;background:#EEF0FF;color:var(--blurple-d);font-size:13px;font-weight:600;padding:7px 14px;border-radius:8px;margin-top:16px}
+  .rp-cap{display:inline-block;background:#EAF4EC;color:var(--blurple-d);font-size:13px;font-weight:600;padding:7px 14px;border-radius:8px;margin-top:16px}
   .pills{display:flex;flex-direction:column;gap:14px}
   .pill{background:#fff;border:1px solid var(--line);border-left:4px solid var(--blurple);border-radius:12px;padding:16px 20px;box-shadow:var(--shadow-s);transition:.3s}
   .pill:hover{transform:translateX(4px);box-shadow:var(--shadow)}
@@ -110,30 +112,30 @@
   /* ===== TABLE ===== */
   .tbl-wrap{overflow-x:auto;border-radius:16px;box-shadow:var(--shadow);border:1px solid var(--line)}
   table{width:100%;border-collapse:collapse;background:#fff;min-width:640px}
-  thead{background:var(--ink);color:#fff}
+  thead{background:var(--blurple);color:#fff}
   th,td{padding:15px 18px;text-align:right;font-size:15px}
   th:first-child,td:first-child{text-align:left;font-weight:700}
   th{font-weight:600;letter-spacing:.02em}
   tbody tr{border-top:1px solid var(--line)}
   tbody tr:nth-child(even){background:var(--light)}
   td.neg{color:var(--red);font-weight:700} td.pos{color:var(--green);font-weight:700}
-  td.land{color:#B45309;font-weight:800;background:#FEF6E7}
+  td.land{color:var(--gold-d);font-weight:800;background:var(--gold-t)}
   .tbl-note{color:var(--mute);font-size:13px;margin-top:14px}
 
   /* ===== THREE STATEMENTS ===== */
   #statements table{min-width:720px}
   #statements th,#statements td{padding:11px 14px;font-size:14px}
-  #statements tbody tr.tot{background:#EEF2F7;font-weight:700}
+  #statements tbody tr.tot{background:#EAF4EC;font-weight:700}
   #statements tbody tr.tot td{color:var(--ink)}
-  #statements tbody tr.tot td.neg{color:var(--red)} #statements tbody tr.tot td.land{color:#B45309}
+  #statements tbody tr.tot td.neg{color:var(--red)} #statements tbody tr.tot td.land{color:var(--gold-d)}
   .stmt-h{display:flex;align-items:baseline;gap:12px;font-size:22px;font-weight:800;color:var(--ink);margin:54px 0 18px}
   .stmt-h:first-of-type{margin-top:8px}
   .stmt-h span{font-size:13px;font-weight:600;color:var(--blurple);letter-spacing:.05em;text-transform:uppercase}
   .analysis{margin-top:20px;background:#fff;border:1px solid var(--line);border-radius:16px;padding:24px 26px;box-shadow:var(--shadow-s)}
   .analysis p{color:var(--slate);font-size:15.5px;margin:0}
   .analysis p b{color:var(--ink)}
-  .analysis .rd{color:var(--red);font-weight:700} .analysis .ld{color:#B45309;font-weight:700}
-  .analysis .takeaway{margin-top:16px;padding:13px 18px;background:linear-gradient(90deg,#F2F0FF,#fff);border-left:4px solid var(--blurple);border-radius:10px;color:var(--ink);font-weight:700;font-size:15px}
+  .analysis .rd{color:var(--red);font-weight:700} .analysis .ld{color:var(--gold-d);font-weight:700}
+  .analysis .takeaway{margin-top:16px;padding:13px 18px;background:linear-gradient(90deg,#EAF4EC,#fff);border-left:4px solid var(--blurple);border-radius:10px;color:var(--ink);font-weight:700;font-size:15px}
 
   /* ===== STRATEGY ===== */
   .grid2{display:grid;grid-template-columns:1fr 1fr;gap:26px}
@@ -141,7 +143,7 @@
   .card{background:#fff;border:1px solid var(--line);border-radius:18px;padding:32px;box-shadow:var(--shadow);transition:.35s}
   .card:hover{transform:translateY(-4px);box-shadow:var(--shadow-l)}
   .card h3{color:var(--ink);font-size:21px;margin-bottom:18px;display:flex;align-items:center;gap:12px}
-  .card h3 .n{background:linear-gradient(135deg,var(--blurple),#a855f7);color:#fff;width:36px;height:36px;border-radius:10px;display:grid;place-items:center;font-size:16px;font-weight:800;flex:none;box-shadow:0 6px 16px rgba(99,91,255,.4)}
+  .card h3 .n{background:linear-gradient(135deg,var(--blurple),#2E9E5B);color:#fff;width:36px;height:36px;border-radius:10px;display:grid;place-items:center;font-size:16px;font-weight:800;flex:none;box-shadow:0 6px 16px rgba(30,122,70,.35)}
   .card ul{list-style:none}
   .card li{padding:11px 0 11px 26px;position:relative;border-top:1px solid var(--line);font-size:15px;color:var(--slate)}
   .card li:first-child{border-top:none}
@@ -151,13 +153,13 @@
   /* ===== CONCLUSION (gradient CTA) ===== */
   .concl{position:relative;color:#fff;text-align:center;padding:120px 0;overflow:hidden;margin-top:40px}
   .concl .gb{position:absolute;inset:0;z-index:-1;transform:skewY(-5deg);transform-origin:100% 0;
-     background:linear-gradient(102deg,#3ec6e0,#4f8cf7 28%,#635bff 52%,#a855f7 76%,#ff6ec4)}
+     background:linear-gradient(102deg,#0E5A34,#1E7A46 30%,#2E9E5B 60%,#E0A92E)}
   .concl .big{font-size:clamp(30px,5.2vw,60px);font-weight:900;line-height:1.25;letter-spacing:-.03em}
   .concl .big .x{color:#ffd2cf} .concl .big .o{color:#fff6e2}
   .concl p{color:rgba(255,255,255,.95);max-width:660px;margin:26px auto 0;font-weight:400;font-size:16.5px}
 
   /* ===== FOOTER ===== */
-  footer{background:var(--ink);color:rgba(255,255,255,.55);padding:42px 0;font-size:13.5px}
+  footer{background:var(--dark);color:rgba(255,255,255,.6);padding:42px 0;font-size:13.5px}
   footer .wrap{display:flex;justify-content:space-between;flex-wrap:wrap;gap:14px}
   footer b{color:rgba(255,255,255,.85);font-weight:600}
 
@@ -166,10 +168,10 @@
   @media(max-width:820px){.peers{grid-template-columns:1fr}}
   .peer{background:#fff;border:1px solid var(--line);border-top:4px solid var(--line);border-radius:16px;padding:26px;box-shadow:var(--shadow);transition:.35s}
   .peer:hover{transform:translateY(-5px);box-shadow:var(--shadow-l)}
-  .peer.red{border-top-color:var(--red)} .peer.gold{border-top-color:#D99A2B} .peer.green{border-top-color:var(--green)}
+  .peer.red{border-top-color:var(--red)} .peer.gold{border-top-color:var(--gold)} .peer.green{border-top-color:var(--green)}
   .peer h4{font-size:19px;color:var(--ink);font-weight:800}
   .peer .tag2{font-weight:700;font-size:14px;margin:5px 0 13px}
-  .peer.red .tag2{color:var(--red)} .peer.gold .tag2{color:#B07D12} .peer.green .tag2{color:var(--green)}
+  .peer.red .tag2{color:var(--red)} .peer.gold .tag2{color:var(--gold-d)} .peer.green .tag2{color:var(--green)}
   .peer p{color:var(--slate);font-size:14.5px;margin:0}
   .scale{background:#fff;border:1px solid var(--line);border-radius:16px;padding:28px;box-shadow:var(--shadow)}
   .scale h4{font-size:16px;color:var(--ink);margin-bottom:16px}
@@ -179,7 +181,7 @@
   .barrow .fill{height:100%;border-radius:8px;min-width:6px}
   .barrow .val{width:128px;text-align:right;font-size:13.5px;color:var(--slate);flex:none}
   .barrow .val b{color:var(--ink)}
-  .insight{margin-top:24px;background:linear-gradient(100deg,var(--ink),#10355a);color:#fff;border-radius:16px;padding:26px 28px;font-size:16px;line-height:1.75}
+  .insight{margin-top:24px;background:linear-gradient(100deg,var(--dark),#1E7A46);color:#fff;border-radius:16px;padding:26px 28px;font-size:16px;line-height:1.75}
   .insight b{color:#ffe8c2}
 
   /* ===== CTA ===== */
@@ -189,11 +191,11 @@
   .cta .row{display:flex;gap:16px;justify-content:center;flex-wrap:wrap}
   .cta a{display:inline-flex;align-items:center;gap:8px;padding:14px 28px;border-radius:30px;font-weight:700;font-size:15px;transition:.25s}
   .cta a:hover{transform:translateY(-2px)}
-  .cta .primary{background:var(--blurple);color:#fff;box-shadow:0 8px 22px rgba(99,91,255,.38)}
+  .cta .primary{background:var(--blurple);color:#fff;box-shadow:0 8px 22px rgba(30,122,70,.34)}
   .cta .ghost{background:#fff;color:var(--ink);border:1px solid var(--line);box-shadow:var(--shadow-s)}
 
   /* ===== 手機版滑動提示 ===== */
-  .swipe-hint{display:none;color:var(--blurple);font-weight:600;font-size:13px;margin:0 0 10px;text-align:center;background:#EEF0FF;padding:9px;border-radius:10px}
+  .swipe-hint{display:none;color:var(--blurple);font-weight:600;font-size:13px;margin:0 0 10px;text-align:center;background:#EAF4EC;padding:9px;border-radius:10px}
 
   /* ===== MOBILE ===== */
   @media(max-width:700px){
@@ -249,7 +251,7 @@
     <div class="sub">大西洋飲料股份有限公司 ── 「蘋果西打」的財報真相</div>
     <p class="desc">一家 60 年國民品牌,差點下市,又靠賣地起死回生。但帳面突然大賺的 EPS 8.71,究竟是浴火重生,還是一場精心包裝的會計煙火?</p>
     <div class="meta">
-      <span class="chip">分析期間　<b>109–114 年度（2020–2025）</b></span>
+      <span class="chip">分析期間　<b>民國 109–114 年度</b></span>
       <span class="chip">製作　<b>政大 EMBA・第六組</b></span>
     </div>
   </div>
@@ -286,12 +288,12 @@
     <h2 class="sec-title">60 年品牌，兩次致命傷</h2>
     <p class="lead">一次是「人」的問題（掏空），一次是「貨」的問題（食安）。</p></div>
     <div class="tl rv">
-      <div class="item"><div class="dot"></div><div class="yr">1965</div><div class="txt">創立,推出台灣首款蘋果口味汽水「蘋菓西打」。</div></div>
-      <div class="item"><div class="dot"></div><div class="yr">1981</div><div class="txt">股票掛牌上市（代號 1213）,全台首家上市飲料公司。</div></div>
-      <div class="item"><div class="dot"></div><div class="yr">2015</div><div class="txt">碳酸飲料市場萎縮,公司營收進入下滑趨勢。</div></div>
-      <div class="item"><div class="dot red"></div><div class="yr red">2018</div><div class="txt">會計師出具「無法表示意見」;前總經理涉嫌掏空逾 1 億元。</div></div>
-      <div class="item"><div class="dot red"></div><div class="yr red">2023</div><div class="txt">食安危機:99% 產線停工,月營收出現負值,幾近停業。</div></div>
-      <div class="item"><div class="dot green"></div><div class="yr green">2024</div><div class="txt">賣地 9.6 億清償全部負債,宣告「蘋菓西打重磅回歸!」</div></div>
+      <div class="item"><div class="dot"></div><div class="yr">民國 54</div><div class="txt">創立,推出台灣首款蘋果口味汽水「蘋菓西打」。</div></div>
+      <div class="item"><div class="dot"></div><div class="yr">民國 70</div><div class="txt">股票掛牌上市（代號 1213）,全台首家上市飲料公司。</div></div>
+      <div class="item"><div class="dot"></div><div class="yr">民國 104</div><div class="txt">碳酸飲料市場萎縮,公司營收進入下滑趨勢。</div></div>
+      <div class="item"><div class="dot red"></div><div class="yr red">民國 107</div><div class="txt">會計師出具「無法表示意見」;前總經理涉嫌掏空逾 1 億元。</div></div>
+      <div class="item"><div class="dot red"></div><div class="yr red">民國 112</div><div class="txt">食安危機:99% 產線停工,月營收出現負值,幾近停業。</div></div>
+      <div class="item"><div class="dot green"></div><div class="yr green">民國 113</div><div class="txt">賣地 9.6 億清償全部負債,宣告「蘋菓西打重磅回歸!」</div></div>
     </div>
   </div>
 </section>
@@ -322,13 +324,13 @@
   <div class="wrap">
     <div class="rv"><span class="eyebrow">Financial Statements</span>
     <h2 class="sec-title">三大報表，六年攤開來看</h2>
-    <p class="lead">財報分析的核心,就是把<strong>損益表、資產負債表、現金流量表</strong>放在一起看。數字單位為仟元;<span style="color:var(--red);font-weight:600">紅字</span>為負值,<span style="color:#B45309;font-weight:600">金字</span>為 113 年賣地造成的一次性異常。</p></div>
+    <p class="lead">財報分析的核心,就是把<strong>損益表、資產負債表、現金流量表</strong>放在一起看。數字單位為仟元;<span style="color:var(--red);font-weight:600">紅字</span>為負值,<span style="color:var(--gold-d);font-weight:600">金字</span>為 113 年賣地造成的一次性異常。</p></div>
 
     <h3 class="stmt-h rv">損益表 <span>Income Statement</span></h3>
     <p class="swipe-hint">← 左右滑動看 109–114 年 →</p>
-    <div class="tbl-wrap rv"><table><thead><tr><th>項目</th><th>109</th><th>110</th><th>111</th><th>112</th><th>113</th><th>114</th></tr></thead><tbody><tr><td>營業收入</td><td>409,612</td><td>428,407</td><td>393,947</td><td>120,702</td><td>190,548</td><td>297,365</td></tr><tr><td>營業成本</td><td class="neg">(404,063)</td><td class="neg">(438,426)</td><td class="neg">(405,814)</td><td class="neg">(215,158)</td><td class="neg">(233,019)</td><td class="neg">(304,768)</td></tr><tr class="tot"><td>營業毛(損)利</td><td>5,549</td><td class="neg">(10,019)</td><td class="neg">(11,867)</td><td class="neg">(94,456)</td><td class="neg">(42,471)</td><td class="neg">(7,403)</td></tr><tr><td>毛利率</td><td>1.4%</td><td class="neg">-2.3%</td><td class="neg">-3.0%</td><td class="neg">-78.3%</td><td class="neg">-22.3%</td><td class="neg">-2.5%</td></tr><tr><td>營業費用</td><td class="neg">(57,997)</td><td class="neg">(55,503)</td><td class="neg">(55,550)</td><td class="neg">(47,458)</td><td class="neg">(42,847)</td><td class="neg">(40,700)</td></tr><tr class="tot"><td>營業利益(損)</td><td class="neg">(52,448)</td><td class="neg">(65,522)</td><td class="neg">(67,417)</td><td class="neg">(141,914)</td><td class="neg">(85,318)</td><td class="neg">(48,103)</td></tr><tr><td>營業利益率</td><td class="neg">-12.8%</td><td class="neg">-15.3%</td><td class="neg">-17.1%</td><td class="neg">-117.6%</td><td class="neg">-44.8%</td><td class="neg">-16.2%</td></tr><tr><td>其他利益及損失</td><td class="neg">(7,012)</td><td class="neg">(23,118)</td><td class="neg">(36)</td><td>34,334</td><td class="land">613,712</td><td class="neg">(403)</td></tr><tr class="tot"><td>本期淨利(損)</td><td class="neg">(27,252)</td><td class="neg">(94,436)</td><td class="neg">(75,809)</td><td class="neg">(138,689)</td><td class="land">493,229</td><td class="neg">(48,380)</td></tr><tr><td>每股盈餘(元)</td><td class="neg">-0.48</td><td class="neg">-1.67</td><td class="neg">-1.34</td><td class="neg">-2.45</td><td class="land">8.71</td><td class="neg">-0.85</td></tr></tbody></table></div>
+    <div class="tbl-wrap rv"><table><thead><tr><th>項目</th><th>109</th><th>110</th><th>111</th><th>112</th><th>113</th><th>114</th></tr></thead><tbody><tr><td>營業收入</td><td>409,612</td><td>428,407</td><td>393,947</td><td>120,702</td><td>190,548</td><td>297,365</td></tr><tr><td>營業成本</td><td class="neg">(404,063)</td><td class="neg">(438,426)</td><td class="neg">(405,814)</td><td class="neg">(215,158)</td><td class="neg">(233,019)</td><td class="neg">(304,768)</td></tr><tr class="tot"><td>營業毛(損)利</td><td>5,549</td><td class="neg">(10,019)</td><td class="neg">(11,867)</td><td class="neg">(94,456)</td><td class="neg">(42,471)</td><td class="neg">(7,403)</td></tr><tr><td>毛利率</td><td>1.4%</td><td class="neg">-2.3%</td><td class="neg">-3.0%</td><td class="neg">-78.3%</td><td class="neg">-22.3%</td><td class="neg">-2.5%</td></tr><tr><td>營業費用</td><td class="neg">(57,997)</td><td class="neg">(55,503)</td><td class="neg">(55,550)</td><td class="neg">(47,458)</td><td class="neg">(42,847)</td><td class="neg">(40,700)</td></tr><tr class="tot"><td>營業利益(損)</td><td class="neg">(52,448)</td><td class="neg">(65,522)</td><td class="neg">(67,417)</td><td class="neg">(141,914)</td><td class="neg">(85,318)</td><td class="neg">(48,103)</td></tr><tr><td>營業利益率</td><td class="neg">-12.8%</td><td class="neg">-15.3%</td><td class="neg">-17.1%</td><td class="neg">-117.6%</td><td class="neg">-44.8%</td><td class="neg">-16.2%</td></tr><tr><td>營業外收入及支出合計</td><td>21,887</td><td class="neg">(28,629)</td><td class="neg">(8,394)</td><td>23,429</td><td class="land">604,248</td><td>2,444</td></tr><tr class="tot"><td>本期淨利(損)</td><td class="neg">(27,252)</td><td class="neg">(94,436)</td><td class="neg">(75,809)</td><td class="neg">(138,689)</td><td class="land">493,229</td><td class="neg">(48,380)</td></tr><tr><td>每股盈餘(元)</td><td class="neg">-0.48</td><td class="neg">-1.67</td><td class="neg">-1.34</td><td class="neg">-2.45</td><td class="land">8.71</td><td class="neg">-0.85</td></tr></tbody></table></div>
     <div class="analysis rv">
-      <p>營收從 110 年全盛的 <b>4.28 億</b>一路跌到 112 年僅 <b>1.2 億</b>,114 年回升到 2.94 億,仍只有全盛期的 <b>68%</b>。更嚴重的是毛利:<b>連續五年負毛利</b>,112 年因停工固定成本無法分攤,毛利率崩到 <span class="rd">−78.3%</span>。唯一帳面大賺的 113 年(淨利 4.93 億、EPS 8.71),其實來自「其他利益及損失」<span class="ld">+6.14 億</span>的賣地進帳——本業營業利益仍虧 <span class="rd">8,531 萬</span>。</p>
+      <p>營收從 110 年全盛的 <b>4.28 億</b>一路跌到 112 年僅 <b>1.2 億</b>,114 年回升到 2.94 億,仍只有全盛期的 <b>68%</b>。更嚴重的是毛利:<b>連續五年負毛利</b>,112 年因停工固定成本無法分攤,毛利率崩到 <span class="rd">−78.3%</span>。唯一帳面大賺的 113 年(淨利 4.93 億、EPS 8.71),其實來自「營業外收入及支出」<span class="ld">+6.04 億</span>的賣地進帳——本業營業利益仍虧 <span class="rd">8,531 萬</span>。</p>
       <div class="takeaway">本業連續五年「賣一瓶賠一瓶」,EPS 8.71 是賣地、不是賣汽水。</div>
     </div>
 
@@ -365,8 +367,8 @@
     </div>
     <div class="scale rv">
       <h4>規模差距（2024 年營收）</h4>
-      <div class="barrow"><div class="nm">大飲</div><div class="track"><div class="fill" style="width:4%;background:var(--ink)"></div></div><div class="val"><b>2.97 億</b>　1×</div></div>
-      <div class="barrow"><div class="nm">黑松</div><div class="track"><div class="fill" style="width:56%;background:#D99A2B"></div></div><div class="val"><b>約 110 億</b>　≈ 37×</div></div>
+      <div class="barrow"><div class="nm">大飲</div><div class="track"><div class="fill" style="width:4%;background:var(--dark)"></div></div><div class="val"><b>2.97 億</b>　1×</div></div>
+      <div class="barrow"><div class="nm">黑松</div><div class="track"><div class="fill" style="width:56%;background:var(--gold)"></div></div><div class="val"><b>約 110 億</b>　≈ 37×</div></div>
       <div class="barrow"><div class="nm">味全</div><div class="track"><div class="fill" style="width:100%;background:var(--green)"></div></div><div class="val"><b>約 195 億</b>　≈ 65×</div></div>
     </div>
     <div class="insight rv">核心洞察:市場需求並未消失。大飲營收僅<b>黑松的 1/37、味全的 1/65</b>,且是<b>唯一毛利為負</b>者。問題本質是「<b>營運模式錯誤</b>」,而非「產業衰退」。</div>
@@ -423,7 +425,7 @@
 <footer>
   <div class="wrap">
     <span>大西洋飲料 1213 ・ 財務報表深度解析　|　政大 EMBA 第六組</span>
-    <span><b>資料期間</b> 109–114 年度（2020–2025）</span>
+    <span><b>資料期間</b> 民國 109–114 年度</span>
   </div>
 </footer>
 
